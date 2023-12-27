@@ -360,89 +360,8 @@ void setup() {
   Readcallback();
 }
 
-/*
-void loop() {
-
-  //send set select parameter instruction
-  Serial.println("Set the SELECT parameter instruction:");
-  Sendcommand(6);
-  Serial.println("Receiving:");
-  Readcallback();
-
-  //send set select mode
-  Serial.println("Set the SELECT mode:");
-  Sendcommand(8);
-  Serial.println("Receiving:");
-  Readcallback();
-
-  //write the label data store
-  Serial.println("Write the label data store:");
-  Sendcommand(10);
-  Serial.println("Receiving:");
-  Readcallback();
-  
-  
-  Serial.println(tagsList.size());
-  for (uint8_t i = 0; i < tagsList.size(); i++) {
-    Serial.print(i);
-    Serial.print(": ");
-    Serial.println(tagsList[i]);
-  }
-  tagsList.clear();
-  delay(5000);
-}
-*/
-
-/**/
-void loop() {
-
-  //send start single polling instruction
-  Serial.println("Single polling instruction:");
-  Sendcommand(3);
-
-  //read the tags
-  Serial.println("Recieving:");
-  ReadcallbackCounting();
- 
-  //Serial printout of the tags
-  Serial.println(tagsList.size());
-  for (uint8_t i = 0; i < tagsList.size(); i++) {
-    Serial.print(i);
-    Serial.print(": ");
-    Serial.println(tagsList[i]);
-  }
-
-  //wait for 1.5 seconds
-  delay(1500);
-
-  //clear the tagslist
-  tagsList.clear();
-}
-
-
-//main driver
-/*
-void loop() {
-  
-  for (size_t i = 0; i < 10; i++) {
-    Serial.println("Single polling:");
-    Sendcommand(3);
-    Serial.println("Recieving:");
-    Readcallback();
-    Serial.println("Requesting data:");
-    Sendcommand(9);
-    Serial.println("Recieving data:");
-    Readcallback();
-    delay(3000);
-    Serial.println();
-  }
-   Serial.println("End of programm");
-  delay(5000);
-}
-*/
 
 //Code for changing the epc code of an RFID tag
-/*
 void loop() {
 
   Serial.println("Single polling: ");
@@ -468,42 +387,5 @@ void loop() {
   Serial.println("Receiving:");
   Readcallback();
 
-
-  
-
-
-
-  
   delay(10000);
-
-  
-
-  uint64_t startTime = millis();
-
-  
-  Serial.println("Start Multiple polling:");
-  Sendcommand(4);
-
-  
-  while(millis() - startTime < duration)
-  {
-    
-  }
-
-  Serial.println("Stop Multiple Polling");
-  Sendcommand(5);
- 
-
-  Serial.println("Recieving:");
-  ReadcallbackCounting();
- 
-  Serial.println("GOED BEZIG");
-  Serial.println(tagsList.size());
-  for (size_t i = 0; i < tagsList.size(); i++) {
-    Serial.print(i);
-    Serial.print(": ");
-    Serial.println(tagsList[i]);
-  }
-  
 }
-*/
