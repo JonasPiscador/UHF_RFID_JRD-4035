@@ -393,22 +393,12 @@ void loop() {
 }
 */
 
-
+/**/
 void loop() {
 
-  //send start multiple polling command
-  Serial.println("Start Multiple polling:");
-  Sendcommand(4);
-
-  //wait for duration
-  delay(duration);
-
-  //send stop multiple polling command
-  Serial.println("Stop Multiple Polling");
-  Sendcommand(5);
-
-  //wait for 1 second
-  delay(1000);
+  //send start single polling instruction
+  Serial.println("Single polling instruction:");
+  Sendcommand(3);
 
   //read the tags
   Serial.println("Recieving:");
