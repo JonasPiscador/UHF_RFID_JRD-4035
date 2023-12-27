@@ -335,6 +335,7 @@ void setup() {
   Serial.println("begin of UHF-Reader");
   Serial2.begin(115200, SERIAL_8N1, 19,21);
   
+  //set working area to Europe(depends on the region)
   Serial.println("Set up work area:");
   Sendcommand(16);
   Serial.println("Receiving: ");
@@ -357,21 +358,6 @@ void setup() {
   Sendcommand(20);
   Serial.println("Receiving:");
   Readcallback();
-
-
-
- 
-
-
-
-  /*Serial.println("Acquire Transmit Power:");
-  Sendcommand(22);
-  Serial.println("Recieving:");
-  Readcallback();
-  Serial.println("Set Transmit Power to 26dBm");
-  Sendcommand(23);
-  Serial.println("Recieving:");
-  Readcallback();*/
 }
 
 /*
@@ -409,26 +395,37 @@ void loop() {
 
 
 void loop() {
-  for(int i = 0; i < 10; i++){
 
+  //send start multiple polling command
   Serial.println("Start Multiple polling:");
   Sendcommand(4);
-  //stop multiple polling
+
+  //wait for duration
   delay(duration);
+
+  //send stop multiple polling command
   Serial.println("Stop Multiple Polling");
   Sendcommand(5);
+
+  //wait for 1 second
   delay(1000);
+
+  //read the tags
   Serial.println("Recieving:");
   ReadcallbackCounting();
  
+  //Serial printout of the tags
   Serial.println(tagsList.size());
   for (uint8_t i = 0; i < tagsList.size(); i++) {
     Serial.print(i);
     Serial.print(": ");
     Serial.println(tagsList[i]);
   }
+
+  //wait for 1.5 seconds
   delay(1500);
-  }
+
+  //clear the tagslist
   tagsList.clear();
 }
 
